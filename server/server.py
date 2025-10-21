@@ -107,7 +107,7 @@ def handle_client(conn, addr):
                 conn.sendall(b"ERROR\r\n")
 
 def main():
-    HOST, PORT = "127.0.0.1", 9889
+    HOST, PORT = "0.0.0.0", 9889
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         s.bind((HOST, PORT))
         s.listen()
