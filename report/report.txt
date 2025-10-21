@@ -1,0 +1,26 @@
+Design Details: 
+Server listens on 127.0.0.1:9889
+Data is stored in "data.txt" for persistence across restarts
+Added support for real pymemcache clients in server for bonus, tested in test_pymemcache_client.py
+Client1 sets two keys with rabdom sleep times
+Client2 retrieves the values set with random sleep times
+The stress_test.py tests how many concurrent clients can connect to the server using threads.
+
+
+Performance: 
+At around 2000 concurrent clients I started getting errors 
+"WinError 10048: Only one usage of each socket address"
+I don't know what that means but after that I tried 3000 and it worked fine.
+It happened again around 6000 clients. 
+Tested up to 10000 clients with little to no issues except for one mentioned above.
+
+Limitations:
+Key/value sizes: keys must be simple strings with no spaces or newlines.
+Value size is limited by available memory. 
+Error handling is generic, nothing detailed
+Exptime is parsed but ignored for now.
+
+
+Only library installed was pymemcache.
+
+
